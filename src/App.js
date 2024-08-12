@@ -3,6 +3,7 @@ import logo from "./logo.svg"
 import Test from "./Test"
 import styles from "./App.module.css"
 import{Title} from "./components"
+import Bootstrap from "./Bootstrap"
 
 function App() {
 
@@ -29,6 +30,7 @@ useEffect(() => {
         <img src={logo} alt="" />
         </>
       )}
+      <Bootstrap />
       </div>
   );
 }
