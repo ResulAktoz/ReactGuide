@@ -1,43 +1,73 @@
-import { useEffect } from "react";
-import logo from "./logo.svg";
-import Test from "./Test";
-import { Title } from "./components";
-import Bootstrap from "./Bootstrap";
-import Tailwind from "./tailwind";
+import { createElement, Fragment } from "react";
 
-import "./tailwind.css";
-import styles from "./App.module.css";
 import "./style.scss";
 
-function App() {
-  /*useEffect (() => {
-  console.log(styles)
-})*/
-
-  useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-    }
-  }, []);
-
-  return (
-    <div className={styles.App}>
-      <Title>{process.env.NODE_ENV}</Title>
-      <Title theme="dark">{process.env.NODE_ENV}</Title>
-      <p className="env">
-        {process.env.REACT_APP_API_URL}
-        <span>Test</span>
-      </p>
-      <Test />
-      {process.env.NODE_ENV === "production" && (
-        <>
-          <img src="/logo192.png" alt="" />
-          <img src={logo} alt="" />
-        </>
-      )}
-      <Bootstrap />
-      <Tailwind />
-    </div>
-  );
+function Button(props) {
+  return <button>{props.text}</button>;
 }
 
+function App() {
+  const todos = ["todo1", "todo2", "todo3"];
+  const style = { color: "red", backgroundColor: "yellow" }; //diyip direkt h1 stlye icinde {style} olarak cagirabiliriz.
+  /*const h1 = createElement("h1", null, "ResulAktoz");
+  const ul = createElement(
+    "ul",
+    null,
+    todos.map((todo) => ("li", null, todo))
+  );
+
+     return createElement(
+       "main",
+       {
+         className: "test",
+         id: "main",
+       },
+       h1,ul //"main content" //children
+    jsx olmadan yapilis.
+     );*/
+
+  /*const searchFunction = () => {
+    alert("maraba");
+  };// onClick icinde cagri yapilir */
+
+  /*
+  {todos.map((todo, index) => (
+          <li>{todo}</li>
+        ))} Bu yapida bir html etiketi döneceğini anlar
+
+        {todos.map(() => ({
+            obje olarak donecegini bilir.
+}))}
+
+          {todos.map(() => {
+            
+            return ''
+            })} return ister.
+
+  */
+
+  return (
+    <main id="main" className="test">
+      <h1 tabIndex="3" style={{ color: "red", backgroundColor: "yellow" }}>
+        ResulAktoz
+      </h1>
+      <label htmlFor="arama" tabIndex={2} onClick={() => alert("meraba")}>
+        Arama
+      </label>
+      <input type="text" id="arama" tabIndex={1}></input>
+
+      <ul>
+        {todos.map((todo, index) => (
+          <li>{todo}</li>
+        ))}
+        {todos.map((todo, idx) => (
+          <li key={idx}>{todo}</li>
+        ))}
+      </ul>
+
+      <Button text="Merhaba" />
+    </main>
+  );
+}
+//main yerine <> </> Fragment olarak kullanilabilir.
 export default App;
