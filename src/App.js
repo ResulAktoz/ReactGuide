@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import logo from "./logo.svg";
 import Test from "./Test";
-import styles from "./App.module.css";
 import { Title } from "./components";
 import Bootstrap from "./Bootstrap";
 import Tailwind from "./tailwind";
+
 import "./tailwind.css";
+import styles from "./App.module.css";
+import "./style.scss";
 
 function App() {
   /*useEffect (() => {
@@ -21,7 +23,10 @@ function App() {
     <div className={styles.App}>
       <Title>{process.env.NODE_ENV}</Title>
       <Title theme="dark">{process.env.NODE_ENV}</Title>
-      <p>{process.env.REACT_APP_API_URL}</p>
+      <p className="env">
+        {process.env.REACT_APP_API_URL}
+        <span>Test</span>
+      </p>
       <Test />
       {process.env.NODE_ENV === "production" && (
         <>
