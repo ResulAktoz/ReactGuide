@@ -1,14 +1,16 @@
-import { createElement, Fragment } from "react";
+import { createElement, Fragment, useState } from "react";
 
 //import "./style.scss";
 import "./tailwind.css";
 import Button from "./components/Button"
+import Tab from "./components/Tab"
 
 /*function Button(props) {
   return <button>{props.text}</button>;
 }*/
 
 function App() {
+  const [activeTab, setActiveTab] = useState(1)
   const todos = ["todo1", "todo2", "todo3"];
   //const style = { color: "red", backgroundColor: "yellow" }; //diyip direkt h1 stlye icinde {style} olarak cagirabiliriz.
   /*const h1 = createElement("h1", null, "ResulAktoz");
@@ -50,11 +52,34 @@ function App() {
 
   return (
     
-    <main id="main" className="test">
-      <Button text = "Selamlar" />
+      <>
+    <div style={{padding: 20}}>
+      <button onClick={() => setActiveTab(3)}>
+        Aktif Tabi değistir
+      </button>
+      <Tab activeTab = {activeTab}>
+        <Tab.Panel title="Profil">1.tab</Tab.Panel>
+        <Tab.Panel title="Hakkinda">2.tab</Tab.Panel>
+        <Tab.Panel title="İletisim">3.tab</Tab.Panel>
+      </Tab>
+    </div>
+
+      <div style={{padding: 20}}>
+      <Button>Buton Örneği</Button>
+      <Button variant="success" text={"color:white"}>
+      Buton Örneği
+      </Button>
+      <Button variant="danger">
+      Buton Örneği
+      </Button>
+      <Button variant="warning">
+      Buton Örneği
+      </Button>
+      </div>
+      {/* <Button text = "Selamlar" />
       <Button text = "Selamlar" variant="success" />
       <Button text = "Selamlar" variant="danger" />
-      <Button text = "Selamlar" variant="warning" />
+      <Button text = "Selamlar" variant="warning" /> */}
       <h1 tabIndex="3" style={{ color: "red", backgroundColor: "yellow" }}>
         ResulAktoz
       </h1>
@@ -73,7 +98,9 @@ function App() {
       </ul>
 
       <Button text="Merhaba" />
-    </main>
+      </>
+    
+    
   );
 }
 //main yerine <> </> Fragment olarak kullanilabilir.
